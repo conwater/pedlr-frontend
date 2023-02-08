@@ -12,7 +12,7 @@ struct LockControlsView: View {
     
     var body: some View {
         HStack {
-            Button(action: { pedlrAPI.postData() }) {
+            Button(action: { pedlrAPI.postData(); HapticManager.instance.notification(type: .success) }) {
                 Image(systemName: "lock.open.fill")
                     .font(.system(size: 24))
                 Text("Unlock")
@@ -25,7 +25,7 @@ struct LockControlsView: View {
             .background(Color("CardColor"))
             .cornerRadius(24)
             Spacer()
-            Button(action: { pedlrAPI.postData() } ) {
+            Button(action: { pedlrAPI.postData(); HapticManager.instance.notification(type: .warning) } ) {
                 Image(systemName: "light.beacon.max.fill")
                     .font(.system(size: 24))
                 Text("Alarm")
