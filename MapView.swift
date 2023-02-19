@@ -12,7 +12,7 @@ struct MapView: View {
     @EnvironmentObject var pedlrAPI: API
     
     var body: some View {
-        Map(coordinateRegion: $pedlrAPI.region, showsUserLocation: true)
+        Map(coordinateRegion: $pedlrAPI.region)
         .cornerRadius(24)
         .padding(.horizontal)
     }

@@ -12,14 +12,13 @@ struct HeaderbarView: View {
     @Binding var showSettingsView: Bool
     
     var body: some View {
-        HStack {
+        HStack(spacing: 24) {
             Text("My Bicycle")
                 .font(.system(size: 36, weight: .heavy, design: .default))
             Spacer()
             Button(action: { showDebugView = true }) {
                 Image(systemName: "ant.fill")
                     .font(.system(size: 24))
-                    .padding(.trailing, 16)
             }
             Button(action: { showSettingsView = true }) {
                 Image(systemName: "gearshape.fill")
