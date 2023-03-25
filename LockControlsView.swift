@@ -2,18 +2,16 @@
 //  LockControlsView.swift
 //  pedlr
 //
-//  Created by Connor Filipiak on 1/25/23.
+//  Created by Connor Filipiak on 3/8/23.
 //
 
 import SwiftUI
 
 struct LockControlsView: View {
-    @EnvironmentObject var pedlrAPI: API
-    
     var body: some View {
         HStack(spacing: 16) {
             Button(action: {
-                pedlrAPI.postData()
+//                pedlrAPI.postData()
                 HapticManager.instance.notification(type: .success)
             }) {
                 Label("Unlock", systemImage: "lock.open.fill")
@@ -25,7 +23,7 @@ struct LockControlsView: View {
             .background(Color("CardColor"))
             .cornerRadius(24)
             Button(action: {
-                pedlrAPI.postData()
+//                pedlrAPI.postData()
                 HapticManager.instance.notification(type: .success)
             }) {
                 Label("Alarm", systemImage: "light.beacon.max.fill")
@@ -44,7 +42,6 @@ struct LockControlsView: View {
 struct LockControlsView_Previews: PreviewProvider {
     static var previews: some View {
         LockControlsView()
-            .environmentObject(API())
     }
 }
 

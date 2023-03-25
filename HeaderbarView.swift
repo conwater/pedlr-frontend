@@ -2,13 +2,12 @@
 //  HeaderbarView.swift
 //  pedlr
 //
-//  Created by Connor Filipiak on 1/25/23.
+//  Created by Connor Filipiak on 3/8/23.
 //
 
 import SwiftUI
 
 struct HeaderbarView: View {
-    @Binding var showDebugView: Bool
     @Binding var showSettingsView: Bool
     
     var body: some View {
@@ -16,10 +15,6 @@ struct HeaderbarView: View {
             Text("My Bicycle")
                 .font(.system(size: 36, weight: .heavy, design: .default))
             Spacer()
-            Button(action: { showDebugView = true }) {
-                Image(systemName: "ant.fill")
-                    .font(.system(size: 24))
-            }
             Button(action: { showSettingsView = true }) {
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 24))
@@ -32,6 +27,6 @@ struct HeaderbarView: View {
 
 struct HeaderbarView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderbarView(showDebugView: .constant(true), showSettingsView: .constant(true))
+        HeaderbarView(showSettingsView: .constant(true))
     }
 }

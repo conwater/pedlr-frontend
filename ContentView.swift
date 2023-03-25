@@ -2,14 +2,12 @@
 //  ContentView.swift
 //  pedlr
 //
-//  Created by Connor Filipiak on 1/10/23.
+//  Created by Connor Filipiak on 3/8/23.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var pedlrAPI: API
-    @State var showDebugView: Bool = false
     @State var showSettingsView: Bool = false
     
     var body: some View {
@@ -17,12 +15,9 @@ struct ContentView: View {
             Color("BackgroundColor")
                 .ignoresSafeArea()
             VStack {
-                HeaderbarView(showDebugView: $showDebugView, showSettingsView: $showSettingsView)
+                HeaderbarView(showSettingsView: $showSettingsView)
                 MapView()
                 LockControlsView()
-            }
-            .sheet(isPresented: $showDebugView) {
-                DebugView()
             }
             .sheet(isPresented: $showSettingsView) {
                 SettingsView()
@@ -30,10 +25,9 @@ struct ContentView: View {
         }
     }
 }
-    
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(API())
     }
 }

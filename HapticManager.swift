@@ -2,7 +2,7 @@
 //  HapticManager.swift
 //  pedlr
 //
-//  Created by Connor Filipiak on 2/6/23.
+//  Created by Connor Filipiak on 3/8/23.
 //
 
 import SwiftUI

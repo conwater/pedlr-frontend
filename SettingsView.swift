@@ -2,7 +2,7 @@
 //  SettingsView.swift
 //  pedlr
 //
-//  Created by Connor Filipiak on 1/17/23.
+//  Created by Connor Filipiak on 3/8/23.
 //
 
 import SwiftUI
