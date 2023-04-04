@@ -23,12 +23,12 @@ class NetworkManager {
     
     func getData() async throws -> Bike {
         // sets the URL
-        guard let url = URL(string: "http://100.67.15.206:8080/" + bike_id + "/info")
+        guard let url = URL(string: "https://engineering.purdue.edu/pedlr/?bike_id=" + bike_id + "&action=info")
         else {
             throw ErrorHandler.badURL
         }
         
-        // makes the GET request and decodes
+        // fetches data with a GET request and decodes
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let bike = try JSONDecoder().decode(Bike.self, from: data)
@@ -40,34 +40,51 @@ class NetworkManager {
     }
     
     func postData(set: String, to: Bool) async throws {
-        // post data to "unlock" or "alarm"
-        let body = ["set_" + set: to]
-
         // sets the URL
-        guard let url = URL(string: "http://100.67.15.206:8080/" + bike_id + "/" + set)
+        guard let url = URL(string: "https://engineering.purdue.edu/pedlr/?bike_id=" + bike_id + "&action=" + set + "&set_" + set + "=" + String(to))
         else {
             throw ErrorHandler.badURL
         }
         
-        // formats the POST request
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "content-type")
-        
-        // encodes
+        // updates data with a GET request and decodes
         do {
-            request.httpBody = try JSONEncoder().encode(body)
-        }
-        catch {
-            throw ErrorHandler.invalidRequest
-        }
-        
-        // makes the POST request
-        do {
-            let (_) = try await URLSession.shared.data(for: request)
+            let _ = try await URLSession.shared.data(from: url)
+            return
         }
         catch {
             throw ErrorHandler.badServerResponse
         }
     }
+        
+//    func postData(set: String, to: Bool) async throws {
+//        // post data to "unlock" or "alarm"
+//        let body = ["set_" + set: to]
+//
+//        // sets the URL
+//        guard let url = URL(string: "http://100.67.15.206:8080/" + bike_id + "/" + set)
+//        else {
+//            throw ErrorHandler.badURL
+//        }
+//
+//        // formats the POST request
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.setValue("application/json", forHTTPHeaderField: "content-type")
+//
+//        // encodes
+//        do {
+//            request.httpBody = try JSONEncoder().encode(body)
+//        }
+//        catch {
+//            throw ErrorHandler.invalidRequest
+//        }
+//
+//        // makes the POST request
+//        do {
+//            let (_) = try await URLSession.shared.data(for: request)
+//        }
+//        catch {
+//            throw ErrorHandler.badServerResponse
+//        }
+//    }
 }

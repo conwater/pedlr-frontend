@@ -11,24 +11,29 @@ struct LockControlsView: View {
     var body: some View {
         HStack(spacing: 16) {
             Button(action: {
-//                pedlrAPI.postData()
+                Task {
+                    try await NetworkManager.instance.postData(set: "unlock", to: true)
+                    try await NetworkManager.instance.postData(set: "alarm", to: false)
+                }
                 HapticManager.instance.notification(type: .success)
             }) {
                 Label("Unlock", systemImage: "lock.open.fill")
                     .font(.system(size: 24,
-                                  weight: .bold,
+                                  weight: .semibold,
                                   design: .default))
             }
             .buttonStyle(LockControlsButtonStyle())
             .background(Color("CardColor"))
             .cornerRadius(24)
             Button(action: {
-//                pedlrAPI.postData()
+                Task {
+                    try await NetworkManager.instance.postData(set: "alarm", to: true)
+                }
                 HapticManager.instance.notification(type: .success)
             }) {
                 Label("Alarm", systemImage: "light.beacon.max.fill")
                     .font(.system(size: 24,
-                                  weight: .bold,
+                                  weight: .semibold,
                                   design: .default))
             }
             .buttonStyle(LockControlsButtonStyle())

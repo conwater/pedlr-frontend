@@ -8,17 +8,11 @@
 import SwiftUI
 import MapKit
 
-// 41.8819, -87.6178 Chicago
-
 struct MapView: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.8819, longitude: -87.6178), span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
-    
-    let location = Location(
-        coordinate: CLLocationCoordinate2D(latitude: 41.8819, longitude: -87.6178)
-    )
+    @ObservedObject var mapper = Mapper.instance
 
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: [location]) { location in
+        Map(coordinateRegion: $mapper.region, annotationItems: [mapper.location]) { location in
             MapAnnotation(coordinate: location.coordinate) {
                 AnnotationView()
             }
@@ -26,11 +20,6 @@ struct MapView: View {
         .cornerRadius(24)
         .padding(.horizontal)
     }
-}
-
-struct Location: Identifiable {
-    let id = UUID()
-    let coordinate: CLLocationCoordinate2D
 }
 
 struct MapView_Previews: PreviewProvider {

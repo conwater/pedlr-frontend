@@ -17,7 +17,7 @@ struct HeaderbarView: View {
             Spacer()
             Button(action: { showSettingsView = true }) {
                 Image(systemName: "gearshape.fill")
-                    .font(.system(size: 24))
+                    .font(.system(size: 24, weight: .semibold))
             }
         }
         .padding()
