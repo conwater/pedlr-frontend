@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct LockControlsView: View {
+    @State var alarm = false
+    
     var body: some View {
         HStack(spacing: 16) {
             Button(action: {
                 Task {
-                    try await NetworkManager.instance.postData(set: "unlock", to: true)
-                    try await NetworkManager.instance.postData(set: "alarm", to: false)
+                    if alarm {
+                        try await NetworkManager.instance.postData(set: "alarm", to: false)
+                        alarm = false
+                    }
+                    else {
+                        try await NetworkManager.instance.postData(set: "unlock", to: true)
+                    }
                 }
                 HapticManager.instance.notification(type: .success)
             }) {
@@ -27,6 +34,7 @@ struct LockControlsView: View {
             .cornerRadius(24)
             Button(action: {
                 Task {
+                    alarm = true
                     try await NetworkManager.instance.postData(set: "alarm", to: true)
                 }
                 HapticManager.instance.notification(type: .success)

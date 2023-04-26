@@ -23,7 +23,8 @@ class NetworkManager {
     
     func getData() async throws -> Bike {
         // sets the URL
-        guard let url = URL(string: "https://engineering.purdue.edu/pedlr/?bike_id=" + bike_id + "&action=info")
+        //guard let url = URL(string: "https://engineering.purdue.edu/pedlr/?bike_id=" + bike_id + "&action=info")
+        guard let url = URL(string: "http://3.145.109.231:8080/?bike_id=" + bike_id + "&action=info")
         else {
             throw ErrorHandler.badURL
         }
@@ -41,7 +42,8 @@ class NetworkManager {
     
     func postData(set: String, to: Bool) async throws {
         // sets the URL
-        guard let url = URL(string: "https://engineering.purdue.edu/pedlr/?bike_id=" + bike_id + "&action=" + set + "&set_" + set + "=" + String(to))
+        //guard let url = URL(string: "https://engineering.purdue.edu/pedlr/?bike_id=" + bike_id + "&action=" + set + "&set_" + set + "=" + String(to))
+        guard let url = URL(string: "http://3.145.109.231:8080/?bike_id=" + bike_id + "&action=" + set + "&set_" + set + "=" + String(to))
         else {
             throw ErrorHandler.badURL
         }

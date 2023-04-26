@@ -16,10 +16,8 @@ struct Location: Identifiable {
 class Mapper: ObservableObject {
     static let instance = Mapper()
     
-    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-                                               latitudinalMeters: CLLocationDistance(250),
-                                               longitudinalMeters: CLLocationDistance(250))
-    @Published var location = Location(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0))
+    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), latitudinalMeters: CLLocationDistance(250), longitudinalMeters: CLLocationDistance(250))
+    @Published var location = Location(coordinate: CLLocationCoordinate2D(latitude: 40.427651, longitude: -86.913823)) // hardcoded location (b/c the annotation won't appear until in region)
     
     var recenter = true
     
