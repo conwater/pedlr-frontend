@@ -3,5 +3,6 @@ This repository contains the code for the frontend of the pedlr app for iOS, bui
 The app allows a user to remotely unlock, monitor, and track the location of their bicycle.
 
 ## Screenshots
-<img src="/Pictures/screenshot_light.png" width="340" height="662">
-<img src="/Pictures/screenshot_dark.png" width="340" height="662">
+<p float="left">
+	<img src="/Pictures/screenshot_light.png" width="340" height="662">
+	<img src="/Pictures/screenshot_dark.png" width="340" height="662">
